@@ -59,7 +59,7 @@ class App extends Component {
     e.preventDefault()
     let c = this.state.chinese
     this.setState({
-      pizza: p+=1.2
+      chinese: c+=1.2
     })
   }
 
@@ -68,8 +68,8 @@ class App extends Component {
     let i = this.state.italian
     let t = this.state.thai
     this.setState({
-      italian: i+=1
-      thai: t+=1,
+      italian: i+=1,
+      thai: t+=1
     })
   }
 
@@ -184,6 +184,7 @@ class App extends Component {
   }
 
   IncreaseBPS(e) {
+    e.preventDefault()
     let b = this.state.burger
     let p = this.state.pizza
     let s = this.state.sushi
@@ -205,7 +206,7 @@ class App extends Component {
       chinese: c+=.5,
       indian: ind+=.5,
       italian: ital+=.5,
-      thai: thai+=.5,
+      thai: t+=.5,
       salad: s+=.5
     })
   }
@@ -304,8 +305,8 @@ class App extends Component {
           answer4="Only if its Chocolate"
           onClickOne={this.IncreaseBPS}
           onClickTwo={this.IncreaseCIITS}
-          onClickThree={this.increaseM}
-          onClickFour={this.increaseD}
+          onClickThree={this.IncreaseM}
+          onClickFour={this.IncreaseD}
         />
       </div>
     )
