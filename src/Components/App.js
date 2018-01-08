@@ -14,7 +14,7 @@ class App extends Component {
       money: 0,
       address: 0,
       delivery: 0,
-      burgers: 0,
+      burger: 0,
       mexican: 0,
       indian: 0,
       thai: 0,
@@ -26,6 +26,16 @@ class App extends Component {
       sushi: 0
   }
   this.increaseBurgers = this.increaseBurgers.bind(this)
+  this.increaseMexican = this.increaseMexican.bind(this)
+  this.increaseIndian = this.increaseIndian.bind(this)
+  this.increaseThai = this.increaseThai.bind(this)
+  this.increaseItalian = this.increaseItalian.bind(this)
+  this.increaseChinese = this.increaseChinese.bind(this)
+  this.increasePizza = this.increasePizza.bind(this)
+  this.increaseSalad = this.increaseSalad.bind(this)
+  this.increaseDesert = this.increaseDesert.bind(this)
+  this.increaseSushi = this.increaseSushi.bind(this)
+  this.increaseThaiBurger = this.increaseThaiBurger.bind(this)
 }
 
   increaseBurgers(e) {
@@ -108,6 +118,16 @@ class App extends Component {
     })
   }
 
+  increaseThaiBurger(e) {
+    e.preventDefault()
+    let valThai = (this.state.thai)
+    let valBurg = (this.state.burger)
+    this.setState({
+      thai: valThai += 1,
+      burger: valBurg += 1
+    })
+  }
+
   render() {
     return (
       <div>
@@ -118,10 +138,7 @@ class App extends Component {
           answer3="Question Three"
           answer4="Question Four"
           question="This is a question"
-          onSubmit1=
-          onsubmit2=
-          onSubmit3=
-          onSubmit4=
+          onClickOne={this.increaseThaiBurger}
         />
         <Quiz
           answer1="1"
@@ -129,8 +146,10 @@ class App extends Component {
           answer3="3"
           answer4="4"
           question="This is another question"
+          onClickTwo={this.increaseThai}
         />
-        {this.state.burgers}
+        {this.state.burger}
+        {this.state.thai}
       </div>
     )
   }
