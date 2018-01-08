@@ -25,10 +25,27 @@ class App extends Component {
       desert: 0,
       sushi: 0
   }
-
+  this.IncreaseBP = this.IncreaseBP.bind(this)
+  this.IncreaseC = this.IncreaseC.bind(this)
+  this.IncreaseI = this.IncreaseI.bind(this)
+  this.IncreaseMITSDS = this.IncreaseMITSDS.bind(this)
+  this.IncreaseBCP = this.IncreaseBCP.bind(this)
+  this.IncreaseIS = this.IncreaseIS.bind(this)
+  this.IncreaseMIT = this.IncreaseMIT.bind(this)
+  this.IncreaseSD = this.IncreaseSD.bind(this)
+  this.IncreaseBI = this.IncreaseBI.bind(this)
+  this.IncreaseCP = this.IncreaseCP.bind(this)
+  this.IncreaseMITS = this.IncreaseMITS.bind(this)
+  this.IncreaseS = this.IncreaseS.bind(this)
+  this.IncreaseD = this.IncreaseD.bind(this)
+  this.IncreaseBPS = this.IncreaseBPS.bind(this)
+  this.IncreaseCIITS = this.IncreaseCIITS.bind(this)
+  this.IncreaseM = this.IncreaseM.bind(this)
+  this.IncreaseBCI = this.IncreaseBCI.bind(this)
+  this.IncreaseMITPS = this.IncreaseMITPS.bind(this)
 }
 
-  increaseBP(e){
+  IncreaseBP(e){
     e.preventDefault()
     let b = this.state.burger
     let p = this.state.pizza
@@ -38,15 +55,15 @@ class App extends Component {
     })
   }
 
-  increaseC(e){
+  IncreaseC(e){
     e.preventDefault()
     let c = this.state.chinese
     this.setState({
-      pizza: p+=1
+      pizza: p+=1.2
     })
   }
 
-  increaseI(e){
+  IncreaseI(e){
     e.preventDefault()
     let i = this.state.italian
     let t = this.state.thai
@@ -154,7 +171,7 @@ class App extends Component {
     e.preventDefault()
     let s = this.state.salad
     this.setState({
-      salad: s+=3
+      salad: s+=1.5
     })
   }
 
@@ -162,7 +179,7 @@ class App extends Component {
     e.preventDefault()
     let d = this.state.desert
     this.setState({
-      desert: d+=3
+      desert: d+=1.5
     })
   }
 
@@ -197,7 +214,35 @@ class App extends Component {
     e.preventDefault()
     let m = this.state.mexican
     this.setState({
-      mexican: m+=3
+      mexican: m+=1.5
+    })
+  }
+
+  IncreaseBCI(e){
+    e.preventDefault()
+    let b = this.state.burger
+    let c = this.state.chinese
+    let i = this.state.italian
+    this.setState({
+      burger: b+=1,
+      chinese: c+=1,
+      italian: i+=1
+    })
+  }
+
+  IncreaseMITPS(e){
+    e.preventDefault()
+    let m = this.state.mexican
+    let i = this.state.indian
+    let t = this.state.thai
+    let p = this.state.pizza
+    let s = this.state.sushi
+    this.setState({
+      mexican: m+=.5,
+      indian: i+=.5,
+      thai: t+=.5,
+      pizza: p+=.5,
+      sushi: s+=.5
     })
   }
 
@@ -208,15 +253,59 @@ class App extends Component {
       <div>
         <Header />
         <Quiz
-          question="This is a question"
-          answer1="Question One"
-          answer2="Question Two"
-          answer3="Question Three"
-          answer4="Question Four"
-          onClickOne={}
-          onClickTwo={}
-          onClickThree={}
-          onClickFour={}
+          question="How Much Grease?"
+          answer1="Some"
+          answer2="A Lot!"
+          answer3="Just a Little"
+          answer4="Basically None"
+          onClickOne={this.IncreaseBP}
+          onClickTwo={this.IncreaseC}
+          onClickThree={this.IncreaseI}
+          onClickFour={this.IncreaseMITSDS}
+        />
+        <Quiz
+          question="Is it Going to be Spicy?"
+          answer1="Nope"
+          answer2="A Bit of Spice is Fine"
+          answer3="Yup, Has to Be!"
+          answer4="Definitely Not!"
+          onClickOne={this.IncreaseBCP}
+          onClickTwo={this.IncreaseIS}
+          onClickThree={this.IncreaseMIT}
+          onClickFour={this.IncreaseSD}
+        />
+        <Quiz
+          question="How Much Meat?"
+          answer1="Some"
+          answer2="ALL THE MEAT!"
+          answer3="Meat Isn't Vital"
+          answer4="NONE NOPE"
+          onClickOne={this.IncreaseBI}
+          onClickTwo={this.IncreaseCP}
+          onClickThree={this.IncreaseMITS}
+          onClickFour={this.IncreaseD}
+        />
+        <Quiz
+          question="Any Veggies?"
+          answer1="On the Side Maybe, I Guess"
+          answer2="Throw Them on Top Sure"
+          answer3="Most Definitely, There Has to Be"
+          answer4="NOPE"
+          onClickOne={this.IncreaseBCI}
+          onClickTwo={this.IncreaseMITPS}
+          onClickThree={this.IncreaseS}
+          onClickFour={this.IncreaseD}
+        />
+        <Quiz
+          question="How much Sauce?"
+          answer1="Not Too Much"
+          answer2="YUP!"
+          answer3="Do Salsa and Queso Count?"
+          answer4="Only if its Chocolate"
+          onClickOne={this.IncreaseBPS}
+          onClickTwo={this.IncreaseCIITS}
+          onClickThree={this.increaseM}
+          onClickFour={this.increaseD}
         />
       </div>
     )
