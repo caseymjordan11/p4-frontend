@@ -43,6 +43,12 @@ class App extends Component {
   this.IncreaseM = this.IncreaseM.bind(this)
   this.IncreaseBCI = this.IncreaseBCI.bind(this)
   this.IncreaseMITPS = this.IncreaseMITPS.bind(this)
+  this.setMoney1 = this.setMoney1.bind(this)
+  this.setMoney2 = this.setMoney2.bind(this)
+  this.setMoney3 = this.setMoney3.bind(this)
+  this.setMoney4 = this.setMoney4.bind(this)
+  this.setTakeoutNo = this.setTakeoutNo.bind(this)
+  this.setTakeoutYes = this.setTakeoutYes.bind(this)
 }
 
   IncreaseBP(e){
@@ -247,7 +253,47 @@ class App extends Component {
     })
   }
 
+  setMoney1(e){
+    e.preventDefault()
+    this.setState({
+      money: 1
+    })
+  }
 
+  setMoney2(e){
+    e.preventDefault()
+    this.setState({
+      money: 2
+    })
+  }
+
+  setMoney3(e){
+    e.preventDefault()
+    this.setState({
+      money: 3
+    })
+  }
+
+  setMoney4(e){
+    e.preventDefault()
+    this.setState({
+      money: 4
+    })
+  }
+
+  setTakeoutNo(e){
+    e.preventDefault()
+    this.setState({
+      delivery: "No"
+    })
+  }
+
+  setTakeoutYes(e){
+    e.preventDefault()
+    this.setState({
+      delivery: "Yes"
+    })
+  }
 
   render() {
     return (
@@ -308,6 +354,27 @@ class App extends Component {
           onClickThree={this.IncreaseM}
           onClickFour={this.IncreaseD}
         />
+        <Quiz
+          question="How much Money Do You Want to Spend?"
+          answer1="$"
+          answer2="$$"
+          answer3="$$$"
+          answer4="$$$$"
+          onClickOne={this.setMoney1}
+          onClickTwo={this.setMoney2}
+          onClickThree={this.setMoney3}
+          onClickFour={this.setMoney4}
+        />
+        <Quiz
+          question="Delivery?"
+          answer1="Yes"
+          answer2="No"
+          onClickOne={this.setTakeoutYes}
+          onClickTwo={this.setTakeoutNo}
+        />
+        <div>
+          ADDRESS HOLDER
+        </div>
       </div>
     )
   }
