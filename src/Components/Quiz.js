@@ -17,10 +17,10 @@ render() {
         <form onSubmit={this.props.onClickTwo}>
           <button class="button">{this.props.answer2}</button>
         </form>
-        <form onSubmit={this.props.onClick}>
+        <form onSubmit={this.props.onClickThree}>
           <button class="button">{this.props.answer3}</button>
         </form>
-        <form onSubmit={this.props.onClick}>
+        <form onSubmit={this.props.onClickFour}>
           <button class="button">{this.props.answer4}</button>
         </form>
       </div>

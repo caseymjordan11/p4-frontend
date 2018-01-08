@@ -25,131 +25,199 @@ class App extends Component {
       desert: 0,
       sushi: 0
   }
-  this.increaseBurgers = this.increaseBurgers.bind(this)
-  this.increaseMexican = this.increaseMexican.bind(this)
-  this.increaseIndian = this.increaseIndian.bind(this)
-  this.increaseThai = this.increaseThai.bind(this)
-  this.increaseItalian = this.increaseItalian.bind(this)
-  this.increaseChinese = this.increaseChinese.bind(this)
-  this.increasePizza = this.increasePizza.bind(this)
-  this.increaseSalad = this.increaseSalad.bind(this)
-  this.increaseDesert = this.increaseDesert.bind(this)
-  this.increaseSushi = this.increaseSushi.bind(this)
-  this.increaseThaiBurger = this.increaseThaiBurger.bind(this)
+
 }
 
-  increaseBurgers(e) {
+  increaseBP(e){
     e.preventDefault()
-    let val = (this.state.burgers)
+    let b = this.state.burger
+    let p = this.state.pizza
     this.setState({
-      burgers: val += 1
+      burger: b+=1,
+      pizza: p+=1
     })
   }
 
-  increaseMexican(e) {
+  increaseC(e){
     e.preventDefault()
-    let val = (this.state.mexican)
+    let c = this.state.chinese
     this.setState({
-      mexican: val += 1
+      pizza: p+=1
     })
   }
 
-  increaseIndian(e) {
+  increaseI(e){
     e.preventDefault()
-    let val = (this.state.indian)
+    let i = this.state.italian
+    let t = this.state.thai
     this.setState({
-      indian: val += 1
+      italian: i+=1
+      thai: t+=1,
     })
   }
 
-  increaseThai(e) {
+  IncreaseMITSDS(e){
     e.preventDefault()
-    let val = (this.state.thai)
+    let m = this.state.mexican
+    let i = this.state.indian
+    let sa = this.state.salad
+    let d = this.state.desert
+    let su = this.state.sushi
     this.setState({
-      thai: val += 1
+      mexican: m+=.5,
+      indian: i+=.5,
+      salad:sa+=.5,
+      desert:d+=.5,
+      sushi:su+=.5
     })
   }
 
-  increaseItalian(e) {
+  IncreaseBCP(e){
     e.preventDefault()
-    let val = (this.state.italian)
+    let b = this.state.burger
+    let c = this.state.chinese
+    let p=this.state.pizza
     this.setState({
-      italian: val += 1
+      burger:b+=.7,
+      chinese:c+=.7,
+      pizza:p+=.7
     })
   }
 
-  increaseChinese(e) {
+  IncreaseIS(e){
     e.preventDefault()
-    let val = (this.state.chinese)
+    let i = this.state.italian
+    let s = this.state.sushi
     this.setState({
-      chinese: val += 1
+      italian: i+=1,
+      sushi: s+=1
     })
   }
 
-  increasePizza(e) {
+  IncreaseMIT(e){
     e.preventDefault()
-    let val = (this.state.pizza)
+    let m = this.state.mexican
+    let i = this.state.indian
+    let t = this.state.thai
     this.setState({
-      pizza: val += 1
+      mexican: m+=.7,
+      indian: i+=.7,
+      thai: i+=.7
     })
   }
 
-  increaseSalad(e) {
+  IncreaseSD(e){
     e.preventDefault()
-    let val = (this.state.salad)
+    let s = this.state.salad
+    let d = this.state.desert
     this.setState({
-      salad: val += 1
+      salad: s+=1,
+      desert: d+=1
     })
   }
 
-  increaseDesert(e) {
+  IncreaseBI(e) {
     e.preventDefault()
-    let val = (this.state.desert)
+    let b = this.state.burger
+    let i = this.state.italian
     this.setState({
-      desert: val += 1
+      burger: b+=1,
+      italian: i+=1
     })
   }
 
-  increaseSushi(e) {
+  IncreaseCP(e) {
     e.preventDefault()
-    let val = (this.state.sushi)
+    let c = this.state.chinese
+    let p = this.state.pizza
     this.setState({
-      sushi: val += 1
+      chinese: c+=1,
+      pizza: p+=1
     })
   }
 
-  increaseThaiBurger(e) {
+  IncreaseMITS(e) {
     e.preventDefault()
-    let valThai = (this.state.thai)
-    let valBurg = (this.state.burger)
+    let m = this.state.mexican
+    let i = this.state.indian
+    let t = this.state.thai
+    let s = this.state.sushi
     this.setState({
-      thai: valThai += 1,
-      burger: valBurg += 1
+      mexican: m+=.6,
+      indian: i+=.6,
+      thai: t+=.6,
+      sushi: s+=.6
     })
   }
+
+  IncreaseS(e){
+    e.preventDefault()
+    let s = this.state.salad
+    this.setState({
+      salad: s+=3
+    })
+  }
+
+  IncreaseD(e){
+    e.preventDefault()
+    let d = this.state.desert
+    this.setState({
+      desert: d+=3
+    })
+  }
+
+  IncreaseBPS(e) {
+    let b = this.state.burger
+    let p = this.state.pizza
+    let s = this.state.sushi
+    this.setState({
+      burger: b+=.7,
+      pizza: p+=.7,
+      sushi: s+=.7
+    })
+  }
+
+  IncreaseCIITS(e){
+    e.preventDefault()
+    let c = this.state.chinese
+    let ind = this.state.indian
+    let ital = this.state.italian
+    let t = this.state.thai
+    let s = this.state.salad
+    this.setState({
+      chinese: c+=.5,
+      indian: ind+=.5,
+      italian: ital+=.5,
+      thai: thai+=.5,
+      salad: s+=.5
+    })
+  }
+
+  IncreaseM(e){
+    e.preventDefault()
+    let m = this.state.mexican
+    this.setState({
+      mexican: m+=3
+    })
+  }
+
+
 
   render() {
     return (
       <div>
         <Header />
         <Quiz
+          question="This is a question"
           answer1="Question One"
           answer2="Question Two"
           answer3="Question Three"
           answer4="Question Four"
-          question="This is a question"
-          onClickOne={this.increaseThaiBurger}
+          onClickOne={}
+          onClickTwo={}
+          onClickThree={}
+          onClickFour={}
         />
-        <Quiz
-          answer1="1"
-          answer2="2"
-          answer3="3"
-          answer4="4"
-          question="This is another question"
-          onClickTwo={this.increaseThai}
-        />
-        {this.state.burger}
-        {this.state.thai}
       </div>
     )
   }
