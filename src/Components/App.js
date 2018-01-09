@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route} from "react-router-dom"
+import { Switch, Route, Redirect } from "react-router-dom"
 import axios from "axios"
 
 import './App.css';
@@ -426,11 +426,14 @@ class App extends Component {
               <button class = "button">Get Recommendation!</button>
             </form>
           </div>
-          )}  />
+        )}  />
         <Route exact path='/rec' render ={() => (
-          <h1>Hi World</h1>
-          )}  />
-          
+          <h1>{this.state.rec}</h1>
+        )}  />
+        <Route path='/*' render ={() => (
+          <Redirect to='/quiz'/>
+        )}  />
+
         </Switch>
       </div>
     )
