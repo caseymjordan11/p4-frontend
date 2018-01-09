@@ -295,6 +295,30 @@ class App extends Component {
     })
   }
 
+
+
+  getRec(e){
+    e.preventDefault()
+    axios
+    .get(
+      "http://localhost:3001/api/yelp/burgers/-77.0141601562/38.8929896136/1"
+    )
+    .then(res => {
+      console.log(res)
+    })
+    .catch(err => {
+      console.log(err)
+    })
+  }
+
+
+
+
+
+
+
+
+
   render() {
     return (
       <div>
@@ -375,6 +399,10 @@ class App extends Component {
         <div>
           ADDRESS HOLDER
         </div>
+
+        <form onSubmit={this.getRec}>
+          <button class = "button">Get Recommendation!</button>
+        </form>
       </div>
     )
   }
