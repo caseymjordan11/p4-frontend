@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Switch, Route, Redirect } from "react-router-dom"
+import { Switch, Route, Redirect, Link } from "react-router-dom"
 import axios from "axios"
 
 import './App.css';
@@ -25,7 +25,7 @@ class App extends Component {
       sushi: 0,
       money: 0,
       location: "Boston",
-      rec: ""
+      rec: "Hi"
   }
   this.IncreaseBP = this.IncreaseBP.bind(this)
   this.IncreaseC = this.IncreaseC.bind(this)
@@ -347,7 +347,7 @@ class App extends Component {
         <Header />
         <Switch>
 
-        <Route exact path='/quiz' render={() => (
+        <Route exact path='/quiz' render={(props) => (
           <div>
             <Quiz
               question="How Much Grease?"
@@ -423,12 +423,19 @@ class App extends Component {
               onClickTwo={this.setTakeoutNo}
             />
             <form onSubmit={this.getRec}>
-              <button class = "button">Get Recommendation!</button>
+              <button>Get Recommendation!</button>
             </form>
+            <h1>{this.state.rec}</h1>
+            <Link to='/quiz/rec'>
+              <button>click</button>
+            </Link>
           </div>
         )}  />
-        <Route exact path='/rec' render ={() => (
-          <h1>{this.state.rec}</h1>
+        <Route exact path='/quiz/rec' render ={() => (
+          <div>
+          <h1>hello world</h1>
+          <h2>{this.state.rec}</h2>
+          </div>
         )}  />
         <Route path='/*' render ={() => (
           <Redirect to='/quiz'/>
