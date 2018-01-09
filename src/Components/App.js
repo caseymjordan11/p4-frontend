@@ -6,13 +6,13 @@ import './App.css';
 
 import Header from './Header.js'
 import Quiz from './Quiz.js'
+import Delivery from './Delivery.js'
+import Geocode from './Geocode.js'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      money: 0,
-      address: 0,
       delivery: 0,
       burger: 0,
       mexican: 0,
@@ -23,7 +23,11 @@ class App extends Component {
       pizza: 0,
       salad: 0,
       desert: 0,
-      sushi: 0
+      sushi: 0,
+      foodRec: "",
+      money: 0,
+      lat: 0,
+      lng: 0
   }
   this.IncreaseBP = this.IncreaseBP.bind(this)
   this.IncreaseC = this.IncreaseC.bind(this)
@@ -49,6 +53,7 @@ class App extends Component {
   this.setMoney4 = this.setMoney4.bind(this)
   this.setTakeoutNo = this.setTakeoutNo.bind(this)
   this.setTakeoutYes = this.setTakeoutYes.bind(this)
+  this.setLocation = this.setLocation.bind(this)
 }
 
   IncreaseBP(e){
@@ -295,13 +300,11 @@ class App extends Component {
     })
   }
 
-
-
   getRec(e){
     e.preventDefault()
     axios
     .get(
-      "http://localhost:3001/api/yelp/burgers/-77.0141601562/38.8929896136/1"
+      "http://localhost:3001/api/yelp/delivery/-77.0141601562/38.8929896136/1"
     )
     .then(res => {
       console.log(res)
@@ -311,13 +314,12 @@ class App extends Component {
     })
   }
 
-
-
-
-
-
-
-
+  setLocation(latitude, longitude) {
+    this.setState({
+        lat: latitude,
+        lng: longitude
+    })
+  }
 
   render() {
     return (
@@ -389,16 +391,16 @@ class App extends Component {
           onClickThree={this.setMoney3}
           onClickFour={this.setMoney4}
         />
-        <Quiz
+        <Delivery
           question="Delivery?"
           answer1="Yes"
           answer2="No"
           onClickOne={this.setTakeoutYes}
           onClickTwo={this.setTakeoutNo}
         />
-        <div>
-          ADDRESS HOLDER
-        </div>
+        <Geocode
+          setLocation={this.setLocation}
+        />
 
         <form onSubmit={this.getRec}>
           <button class = "button">Get Recommendation!</button>
