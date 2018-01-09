@@ -7,13 +7,12 @@ import './App.css';
 import Header from './Header.js'
 import Quiz from './Quiz.js'
 import Delivery from './Delivery.js'
-import Geocode from './Geocode.js'
 
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      delivery: 0,
+      delivery: "Delivery",
       burger: 0,
       mexican: 0,
       indian: 0,
@@ -24,10 +23,9 @@ class App extends Component {
       salad: 0,
       desert: 0,
       sushi: 0,
-      foodRec: "",
       money: 0,
-      lat: 0,
-      lng: 0
+      location: "Boston",
+      rec: ""
   }
   this.IncreaseBP = this.IncreaseBP.bind(this)
   this.IncreaseC = this.IncreaseC.bind(this)
@@ -53,7 +51,7 @@ class App extends Component {
   this.setMoney4 = this.setMoney4.bind(this)
   this.setTakeoutNo = this.setTakeoutNo.bind(this)
   this.setTakeoutYes = this.setTakeoutYes.bind(this)
-  this.setLocation = this.setLocation.bind(this)
+  this.getRec = this.getRec.bind(this)
 }
 
   IncreaseBP(e){
@@ -289,125 +287,154 @@ class App extends Component {
   setTakeoutNo(e){
     e.preventDefault()
     this.setState({
-      delivery: "No"
+      delivery: ""
     })
   }
 
   setTakeoutYes(e){
     e.preventDefault()
     this.setState({
-      delivery: "Yes"
+      delivery: "Delivery"
     })
   }
 
   getRec(e){
     e.preventDefault()
-    axios
-    .get(
-      "http://localhost:3001/api/yelp/delivery/-77.0141601562/38.8929896136/1"
-    )
-    .then(res => {
-      console.log(res)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-  }
-
-  setLocation(latitude, longitude) {
+    let foods = [
+      "burger",
+      "mexican",
+      "indian",
+      "thai",
+      "italian",
+      "chinese",
+      "pizza",
+      "salad",
+      "desert",
+      "sushi"
+    ]
+    let foodVals = [
+      this.state.burger,
+      this.state.mexican,
+      this.state.indian,
+      this.state.thai,
+      this.state.italian,
+      this.state.chinese,
+      this.state.pizza,
+      this.state.salad,
+      this.state.desert,
+      this.state.sushi
+    ]
+    let index = foodVals.indexOf(Math.max(...foodVals))
+    let foodRec = foods[index]
     this.setState({
-        lat: latitude,
-        lng: longitude
+      rec: foodRec
     })
-  }
+      axios
+        .get(
+          `http://localhost:3001/api/yelp/${this.state.rec + this.state.delivery}/${this.state.location}/${this.state.money}`
+        )
+        .then(res => {
+          console.log(res)
+        })
+        .catch(err => {
+          console.log(err)
+        })
+    }
 
   render() {
     return (
       <div>
         <Header />
-        <Quiz
-          question="How Much Grease?"
-          answer1="Some"
-          answer2="A Lot!"
-          answer3="Just a Little"
-          answer4="Basically None"
-          onClickOne={this.IncreaseBP}
-          onClickTwo={this.IncreaseC}
-          onClickThree={this.IncreaseI}
-          onClickFour={this.IncreaseMITSDS}
-        />
-        <Quiz
-          question="Is it Going to be Spicy?"
-          answer1="Nope"
-          answer2="A Bit of Spice is Fine"
-          answer3="Yup, Has to Be!"
-          answer4="Definitely Not!"
-          onClickOne={this.IncreaseBCP}
-          onClickTwo={this.IncreaseIS}
-          onClickThree={this.IncreaseMIT}
-          onClickFour={this.IncreaseSD}
-        />
-        <Quiz
-          question="How Much Meat?"
-          answer1="Some"
-          answer2="ALL THE MEAT!"
-          answer3="Meat Isn't Vital"
-          answer4="NONE NOPE"
-          onClickOne={this.IncreaseBI}
-          onClickTwo={this.IncreaseCP}
-          onClickThree={this.IncreaseMITS}
-          onClickFour={this.IncreaseD}
-        />
-        <Quiz
-          question="Any Veggies?"
-          answer1="On the Side Maybe, I Guess"
-          answer2="Throw Them on Top Sure"
-          answer3="Most Definitely, There Has to Be"
-          answer4="NOPE"
-          onClickOne={this.IncreaseBCI}
-          onClickTwo={this.IncreaseMITPS}
-          onClickThree={this.IncreaseS}
-          onClickFour={this.IncreaseD}
-        />
-        <Quiz
-          question="How much Sauce?"
-          answer1="Not Too Much"
-          answer2="YUP!"
-          answer3="Do Salsa and Queso Count?"
-          answer4="Only if its Chocolate"
-          onClickOne={this.IncreaseBPS}
-          onClickTwo={this.IncreaseCIITS}
-          onClickThree={this.IncreaseM}
-          onClickFour={this.IncreaseD}
-        />
-        <Quiz
-          question="How much Money Do You Want to Spend?"
-          answer1="$"
-          answer2="$$"
-          answer3="$$$"
-          answer4="$$$$"
-          onClickOne={this.setMoney1}
-          onClickTwo={this.setMoney2}
-          onClickThree={this.setMoney3}
-          onClickFour={this.setMoney4}
-        />
-        <Delivery
-          question="Delivery?"
-          answer1="Yes"
-          answer2="No"
-          onClickOne={this.setTakeoutYes}
-          onClickTwo={this.setTakeoutNo}
-        />
-        <Geocode
-          setLocation={this.setLocation}
-        />
+        <Switch>
 
-        <form onSubmit={this.getRec}>
-          <button class = "button">Get Recommendation!</button>
-        </form>
+        <Route exact path='/quiz' render={() => (
+          <div>
+            <Quiz
+              question="How Much Grease?"
+              answer1="Some"
+              answer2="A Lot!"
+              answer3="Just a Little"
+              answer4="Basically None"
+              onClickOne={this.IncreaseBP}
+              onClickTwo={this.IncreaseC}
+              onClickThree={this.IncreaseI}
+              onClickFour={this.IncreaseMITSDS}
+            />
+            <Quiz
+              question="Is it Going to be Spicy?"
+              answer1="Nope"
+              answer2="A Bit of Spice is Fine"
+              answer3="Yup, Has to Be!"
+              answer4="Definitely Not!"
+              onClickOne={this.IncreaseBCP}
+              onClickTwo={this.IncreaseIS}
+              onClickThree={this.IncreaseMIT}
+              onClickFour={this.IncreaseSD}
+            />
+            <Quiz
+              question="How Much Meat?"
+              answer1="Some"
+              answer2="ALL THE MEAT!"
+              answer3="Meat Isn't Vital"
+              answer4="NONE NOPE"
+              onClickOne={this.IncreaseBI}
+              onClickTwo={this.IncreaseCP}
+              onClickThree={this.IncreaseMITS}
+              onClickFour={this.IncreaseD}
+            />
+            <Quiz
+              question="Any Veggies?"
+              answer1="On the Side Maybe, I Guess"
+              answer2="Throw Them on Top Sure"
+              answer3="Most Definitely, There Has to Be"
+              answer4="NOPE"
+              onClickOne={this.IncreaseBCI}
+              onClickTwo={this.IncreaseMITPS}
+              onClickThree={this.IncreaseS}
+              onClickFour={this.IncreaseD}
+            />
+            <Quiz
+              question="How much Sauce?"
+              answer1="Not Too Much"
+              answer2="YUP!"
+              answer3="Do Salsa and Queso Count?"
+              answer4="Only if its Chocolate"
+              onClickOne={this.IncreaseBPS}
+              onClickTwo={this.IncreaseCIITS}
+              onClickThree={this.IncreaseM}
+              onClickFour={this.IncreaseD}
+            />
+            <Quiz
+              question="How much Money Do You Want to Spend?"
+              answer1="$"
+              answer2="$$"
+              answer3="$$$"
+              answer4="$$$$"
+              onClickOne={this.setMoney1}
+              onClickTwo={this.setMoney2}
+              onClickThree={this.setMoney3}
+              onClickFour={this.setMoney4}
+            />
+            <Delivery
+              question="Delivery?"
+              answer1="Yes"
+              answer2="No"
+              onClickOne={this.setTakeoutYes}
+              onClickTwo={this.setTakeoutNo}
+            />
+            <form onSubmit={this.getRec}>
+              <button class = "button">Get Recommendation!</button>
+            </form>
+          </div>
+          )}  />
+        <Route exact path='/rec' render ={() => (
+          <h1>Hi World</h1>
+          )}  />
+          
+        </Switch>
       </div>
     )
   }
 }
 
-export default App;
+export default App
