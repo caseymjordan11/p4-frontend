@@ -20,6 +20,7 @@ class RecShow extends Component {
         />
         <MapRs
           recs={this.props.recs}
+          position={[this.props.lat, this.props.lng]}
         />
       </div>
     )

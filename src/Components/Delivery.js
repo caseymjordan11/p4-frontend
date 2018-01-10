@@ -6,6 +6,16 @@ class Delivery extends Component {
     super(props)
   }
 
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        this.props.setLocation(position.coords.latitude, position.coords.longitude)
+      },
+      (error) => alert(error),
+      {enableHighAccuracy: true}
+    )
+  }
+
 render() {
   return (
     <div class="questionBlock">

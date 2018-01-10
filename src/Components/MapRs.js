@@ -13,6 +13,7 @@ class MapRs extends Component {
   }
 
   render() {
+    console.log(this.props.position)
     var Markers
     if (this.props.recs) {
       Markers = this.props.recs.map(r => {
@@ -32,7 +33,7 @@ class MapRs extends Component {
         <Map
           width={800}
           height={600}
-          defaultCenter={[42.3508463503656,-71.0620657727122]}
+          defaultCenter={Object.values(this.props.position)}
           defaultZoom={13}
           zoomOnMouseWheel={false}
         >

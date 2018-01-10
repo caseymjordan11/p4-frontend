@@ -27,7 +27,9 @@ class App extends Component {
       money: 0,
       location: "Boston",
       rec: "",
-      data: []
+      data: [],
+      lat: null,
+      lng: null
   }
   this.IncreaseBP = this.IncreaseBP.bind(this)
   this.IncreaseC = this.IncreaseC.bind(this)
@@ -54,7 +56,17 @@ class App extends Component {
   this.setTakeoutNo = this.setTakeoutNo.bind(this)
   this.setTakeoutYes = this.setTakeoutYes.bind(this)
   this.getRec = this.getRec.bind(this)
+  this.setLocation = this.setLocation.bind(this)
 }
+
+  setLocation(lt,ln){
+    this.setState({
+      lat: lt,
+      lng: ln
+    })
+    console.log(this.state.lat)
+    console.log(this.state.lng)
+  }
 
   IncreaseBP(e){
     e.preventDefault()
@@ -333,7 +345,7 @@ class App extends Component {
     })
       axios
         .get(
-          `http://localhost:3001/api/yelp/${this.state.rec + this.state.delivery}/${this.state.location}/${this.state.money}`
+          `http://localhost:3001/api/yelp/${this.state.rec + this.state.delivery}/${this.state.lat}/${this.state.lng}/${this.state.money}`
         )
         .then(res => {
           this.setState({
@@ -426,11 +438,11 @@ class App extends Component {
               answer2="No"
               onClickOne={this.setTakeoutYes}
               onClickTwo={this.setTakeoutNo}
+              setLocation={this.setLocation}
             />
             <form onSubmit={this.getRec}>
               <button>Get Recommendation!</button>
             </form>
-            <h1>{this.state.rec}</h1>
             <Link to='/quiz/rec'>
               <button>click</button>
             </Link>
@@ -441,6 +453,8 @@ class App extends Component {
             <RecShow
               rec={this.state.rec}
               recs={this.state.data}
+              lat={this.state.lat}
+              lng={this.state.lng}
             />
           </div>
         )}  />
