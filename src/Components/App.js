@@ -7,6 +7,7 @@ import './App.css';
 import Header from './Header.js'
 import Quiz from './Quiz.js'
 import Delivery from './Delivery.js'
+import RecShow from './RecShow.js'
 
 class App extends Component {
   constructor(props) {
@@ -25,7 +26,8 @@ class App extends Component {
       sushi: 0,
       money: 0,
       location: "Boston",
-      rec: "Hi"
+      rec: "",
+      data: []
   }
   this.IncreaseBP = this.IncreaseBP.bind(this)
   this.IncreaseC = this.IncreaseC.bind(this)
@@ -301,16 +303,16 @@ class App extends Component {
   getRec(e){
     e.preventDefault()
     let foods = [
-      "burger",
-      "mexican",
-      "indian",
-      "thai",
-      "italian",
-      "chinese",
-      "pizza",
-      "salad",
-      "desert",
-      "sushi"
+      "Burger",
+      "Mexican",
+      "Indian",
+      "Thai",
+      "Italian",
+      "Chinese",
+      "Pizza",
+      "Salad",
+      "Desert",
+      "Sushi"
     ]
     let foodVals = [
       this.state.burger,
@@ -334,7 +336,10 @@ class App extends Component {
           `http://localhost:3001/api/yelp/${this.state.rec + this.state.delivery}/${this.state.location}/${this.state.money}`
         )
         .then(res => {
-          console.log(res)
+          this.setState({
+            data: res["data"]["jsonBody"]["businesses"]
+          })
+          console.log(this.state.data)
         })
         .catch(err => {
           console.log(err)
@@ -433,8 +438,10 @@ class App extends Component {
         )}  />
         <Route exact path='/quiz/rec' render ={() => (
           <div>
-          <h1>hello world</h1>
-          <h2>{this.state.rec}</h2>
+            <RecShow
+              rec={this.state.rec}
+              recs={this.state.data}
+            />
           </div>
         )}  />
         <Route path='/*' render ={() => (

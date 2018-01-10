@@ -1,0 +1,9 @@
+.rec {
+  display: flex;
+  flex-direction:column;
+}
+
+h1, h2 {
+  display: flex;
+  justify-content: center;
+}
