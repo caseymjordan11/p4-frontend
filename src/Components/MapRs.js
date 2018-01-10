@@ -5,11 +5,22 @@ import Marker from "pigeon-marker"
 class MapRs extends Component {
   constructor(props) {
     super(props)
-    this.onMarkerClick = this.onMarkerClick.bind(this)
+    this.state={
+      rest: []
+    }
+    this.showRest = this.showRest.bind(this)
   }
 
-  onMarkerClick(e) {
-    this.props.alert(e.payload[0])
+  showRest(e){
+    console.log(e.payload)
+    let name = e.payload[0]
+    let rating = e.payload[1]
+    let city = e.payload[2]
+    let phone = e.payload[3]
+    let url = e.payload[4]
+    this.setState({
+      rest: [name, rating, city, phone, url]
+    })
   }
 
   render() {
@@ -19,10 +30,10 @@ class MapRs extends Component {
       Markers = this.props.recs.map(r => {
         return (
           <Marker
-            key={`marker_${r.name}`}
+            key={`marker_${r.id}`}
             anchor={Object.values(r.coordinates)}
-            payload={[r]}
-            onClick={this.onMarkerClick}
+            payload={[r.name, r.rating, r.location.city, r.phone, r.url]}
+            onClick={this.showRest}
           />
         )
       })
@@ -39,6 +50,12 @@ class MapRs extends Component {
         >
           {Markers}
         </Map>
+        <div class="clicked">
+            <h4><strong><h4>Name: </h4><a href={this.state.rest[4]}>{this.state.rest[0]}</a></strong></h4>
+            <h4>Phone: {this.state.rest[3]}</h4>
+            <h4>City: {this.state.rest[2]}</h4>
+            <h4>Rating: {this.state.rest[1]}</h4>
+        </div>
       </div>
     )
   }
