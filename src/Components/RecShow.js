@@ -1,12 +1,14 @@
 import React, { Component } from "react"
 import './RecShow.css'
+import axios from 'axios'
 
 import MapRs from './MapRs.js'
+import RecTable from './RecTable.js'
 
 class RecShow extends Component {
   constructor(props){
     super(props)
-}
+  }
 
   render(){
     console.log(this.props.recs)
@@ -18,6 +20,9 @@ class RecShow extends Component {
           recs={this.props.recs}
           position={[this.props.lat, this.props.lng]}
           food={this.props.rec}
+        />
+        <RecTable
+          hist={this.props.hist}
         />
       </div>
     )
