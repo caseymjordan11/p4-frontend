@@ -29,7 +29,7 @@
 
 html {
   font-family: verdana, sans-serif;
-  background: lightgrey;
+  background: #ddc1a2;
 }
 
 .quiz {
@@ -87,6 +87,12 @@ html {
     border: 2px solid black;
     text-shadow: 0 0 5px black;
     margin-bottom: 20px;
+}
+
+.link {
+  width: 200px;
+  height: 100px;
+  text-align: center;
 }
 
 .btn-hide {

@@ -387,7 +387,6 @@ class App extends Component {
           retakeQuiz={this.retakeQuiz}
         />
         <Switch>
-
         <Route exact path='/quiz' render={(props) => (
           <div class="quiz">
             <Quiz

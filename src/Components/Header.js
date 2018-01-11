@@ -8,10 +8,7 @@ class Header extends Component {
     <div>
       <nav>
         <div class="title">
-          <h1>Title</h1>
-          <Link to="/quiz">
-            <button onClick={this.props.retakeQuiz}>retakeQuiz</button>
-          </Link>
+          <h1>Lazy Chef</h1>
         </div>
       </nav>
     </div>
