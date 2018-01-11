@@ -2,6 +2,38 @@
   height: 145px;
   width: 145px;
   margin: 10px;
+  width: 200px;
+  height: 100px;
+  background: #FF876F;
+  border-radius: 25px;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  border: 2px solid black;
+  text-shadow: 0 0 10px black;
+}
+
+.button:hover {
+  background: #E74624;
+}
+
+.button-clicked {
+  height: 145px;
+  width: 145px;
+  margin: 10px;
+  width: 200px;
+  height: 100px;
+  background: #BCF3FF;
+  border-radius: 25px;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  border: 2px solid black;
+  text-shadow: 0 0 10px black;
+}
+
+.button-clicked:hover {
+  background: #BCF3FF
 }
 
 .questionBlock {
@@ -18,4 +50,5 @@
 h2 {
   display: flex;
   justify-content: center;
+  text-shadow: 0 0 20px #BCF3FF;
 }

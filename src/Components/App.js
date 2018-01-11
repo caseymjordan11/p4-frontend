@@ -365,7 +365,7 @@ class App extends Component {
         <Switch>
 
         <Route exact path='/quiz' render={(props) => (
-          <div>
+          <div class="quiz">
             <Quiz
               question="How Much Grease?"
               answer1="Some"
@@ -440,12 +440,14 @@ class App extends Component {
               onClickTwo={this.setTakeoutNo}
               setLocation={this.setLocation}
             />
-            <form onSubmit={this.getRec}>
-              <button>Get Recommendation!</button>
-            </form>
-            <Link to='/quiz/rec'>
-              <button>click</button>
-            </Link>
+            <div class="getRecBut">
+              <form onSubmit={this.getRec}>
+                <button class="getRec">Get Recommendation!</button>
+              </form>
+              <Link to='/quiz/rec'>
+                <button>click</button>
+              </Link>
+            </div>
           </div>
         )}  />
         <Route exact path='/quiz/rec' render ={() => (
