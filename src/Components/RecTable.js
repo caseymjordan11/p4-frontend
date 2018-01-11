@@ -6,14 +6,22 @@ class RecTable extends Component {
   }
 
   render() {
-    console.log("********")
-    console.log(this.props.hist)
-    console.log("********")
+    var rList
+    if (this.props.hist) {
+      rList = this.props.hist.map(r => {
+         return(
+           <div>
+             <h4><strong><a href={r.url}>{r.name}</a></strong></h4>
+             <h4>{r.food}</h4>
+             <h4>{r.city}</h4>
+             <h4>{r.rating}</h4>
+           </div>
+         )
+      })
+    }
     return(
       <div>
-        <h1>
-          hi
-        </h1>
+        {rList}
       </div>
     )
   }

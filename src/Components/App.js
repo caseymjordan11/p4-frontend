@@ -29,8 +29,7 @@ class App extends Component {
       rec: "",
       data: [],
       lat: null,
-      lng: null,
-      recHist: []
+      lng: null
   }
   this.IncreaseBP = this.IncreaseBP.bind(this)
   this.IncreaseC = this.IncreaseC.bind(this)
@@ -58,18 +57,6 @@ class App extends Component {
   this.setTakeoutYes = this.setTakeoutYes.bind(this)
   this.getRec = this.getRec.bind(this)
   this.setLocation = this.setLocation.bind(this)
-}
-
-componentWillMount(){
-  axios.get('http://localhost:3001/api/rec')
-  .then((res) => {
-    this.setState({
-      hist: res.data
-    })
-  })
-  .catch((err) => {
-    console.log(err)
-  })
 }
 
   setLocation(lt,ln){
@@ -468,7 +455,6 @@ componentWillMount(){
               recs={this.state.data}
               lat={this.state.lat}
               lng={this.state.lng}
-              hist={this.state.hist}
             />
           </div>
         )}  />

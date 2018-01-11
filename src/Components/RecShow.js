@@ -8,10 +8,24 @@ import RecTable from './RecTable.js'
 class RecShow extends Component {
   constructor(props){
     super(props)
+    this.state={
+      hist: []
+    }
+  }
+
+  componentWillMount(){
+    axios.get(`http://localhost:3001/api/rec/${this.props.rec}`)
+    .then((res) => {
+      this.setState({
+        hist: res.data
+      })
+    })
+    .catch((err) => {
+      console.log(err)
+    })
   }
 
   render(){
-    console.log(this.props.recs)
     return (
       <div class="rec">
         <h1>Your food Recommendation is:</h1>
@@ -22,7 +36,7 @@ class RecShow extends Component {
           food={this.props.rec}
         />
         <RecTable
-          hist={this.props.hist}
+          hist={this.state.hist}
         />
       </div>
     )
