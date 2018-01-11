@@ -28,7 +28,7 @@ class RecShow extends Component {
   render(){
     return (
       <div class="rec">
-        <h1>Your food Recommendation is:</h1>
+        <h2>Your Food Recommendation is:</h2>
         <h2>{this.props.rec}</h2>
         <MapRs
           recs={this.props.recs}

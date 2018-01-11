@@ -3,14 +3,18 @@ import Map from "pigeon-maps"
 import Marker from "pigeon-marker"
 import axios from 'axios'
 
+import './MapRs.css'
+
 class MapRs extends Component {
   constructor(props) {
     super(props)
     this.state={
-      rest: []
+      rest: [],
+      class: "but"
     }
     this.showRest = this.showRest.bind(this)
     this.saveRec = this.saveRec.bind(this)
+    this.changeBut = this.changeBut.bind(this)
   }
 
   saveRec(e){
@@ -43,6 +47,12 @@ class MapRs extends Component {
     })
   }
 
+  changeBut(){
+    this.setState({
+      class: "but-clicked"
+    })
+  }
+
   render() {
     console.log(this.props.position)
     var Markers
@@ -63,7 +73,7 @@ class MapRs extends Component {
       <div class="map">
         <Map
           width={800}
-          height={600}
+          height={500}
           defaultCenter={Object.values(this.props.position)}
           defaultZoom={13}
           zoomOnMouseWheel={false}
@@ -71,13 +81,25 @@ class MapRs extends Component {
           {Markers}
         </Map>
         <div class="clicked">
-            <h4><strong><h4>Name: </h4><a href={this.state.rest[4]}>{this.state.rest[0]}</a></strong></h4>
-            <h4>Phone: {this.state.rest[3]}</h4>
-            <h4>City: {this.state.rest[2]}</h4>
-            <h4>Rating: {this.state.rest[1]}</h4>
+            <div class = "show">
+              <h4 class="label">Name:</h4>
+              <h4 class="val"><a href={this.state.rest[4]}>{this.state.rest[0]}</a></h4>
+            </div>
+            <div class = "show">
+              <h4 class="label">Phone:</h4>
+              <h4 class="val">{this.state.rest[3]}</h4>
+            </div>
+            <div class = "show">
+              <h4 class="label">City:</h4>
+              <h4 class="val">{this.state.rest[2]}</h4>
+            </div>
+            <div class = "show">
+              <h4 class="label">Rating:</h4>
+              <h4 class="val">{this.state.rest[1]}</h4>
+            </div>
         </div>
         <form onSubmit={this.saveRec}>
-          <button>
+          <button onClick={this.changeBut} class = {this.state.class}>
               Save Recommendation!
           </button>
         </form>

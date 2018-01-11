@@ -1,0 +1,55 @@
+.clicked {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.show {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 5px;
+  padding-bottom: 0;
+  border-bottom: solid 2px black;
+}
+
+.val {
+  margin-top: 0;
+  padding-bottom: 0;
+}
+
+.but{
+    height: 50px;
+    width: 150px;
+    margin: 10px;
+    width: 200px;
+    height: 100px;
+    background: #FF876F;
+    border-radius: 25px;
+    font-size: 17px;
+    color: white;
+    font-weight: bold;
+    border: 2px solid black;
+    text-shadow: 0 0 10px black;
+}
+
+.but:hover{
+  background: #E74624;
+}
+
+.but-clicked {
+  background: #BCF3FF;
+  height: 50px;
+  width: 150px;
+  margin: 10px;
+  width: 200px;
+  height: 100px;
+  border-radius: 25px;
+  font-size: 17px;
+  color: white;
+  font-weight: bold;
+  border: 2px solid black;
+  text-shadow: 0 0 10px black;
+}
