@@ -1,6 +1,6 @@
 import React, { Component } from "react"
 
-import './MapRs.css'
+import TableRow from './TableRow.js'
 
 class RecTable extends Component {
   constructor(props){
@@ -13,27 +13,16 @@ class RecTable extends Component {
       rList = this.props.hist.map(r => {
          return(
            <div>
-           <div class = "show">
-             <h4><strong><a href={r.url}>{r.name}</a></strong></h4>
-            </div>
-            <div class = "show">
-             <h4>{r.food}</h4>
-             </div>
-
-             <div class = "show">
-             <h4>{r.city}</h4>
-             </div>
-
-             <div class = "show">
-             <h4>{r.rating}</h4>
-             </div>
-
+              <
+                TableRow r={r}
+              />
            </div>
          )
       })
     }
     return(
       <div>
+        <h2>Recently Accepted Recommendations</h2>
         {rList}
       </div>
     )
