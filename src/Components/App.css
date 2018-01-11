@@ -49,7 +49,7 @@ html {
 .getRec {
   width: 200px;
   height: 100px;
-  background: salmon;
+  background: #FF876F;
   border-radius: 25px;
   font-size: 20px;
   color: white;
@@ -60,5 +60,45 @@ html {
 }
 
 .getRec:hover {
-  background:red;
+  background: #E74624;;
+}
+
+.btn-hide:hover {
+  width: 200px;
+  height: 100px;
+  background: #E74624;
+  border-radius: 25px;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  border: 2px solid black;
+  text-shadow: 0 0 5px black;
+  margin-bottom: 20px;
+}
+
+.btn-show{
+    width: 200px;
+    height: 100px;
+    background: #FF876F;
+    border-radius: 25px;
+    font-size: 20px;
+    color: white;
+    font-weight: bold;
+    border: 2px solid black;
+    text-shadow: 0 0 5px black;
+    margin-bottom: 20px;
+}
+
+.btn-hide {
+  display: none;
+  width: 200px;
+  height: 100px;
+  background: #FF876F;
+  border-radius: 25px;
+  font-size: 20px;
+  color: white;
+  font-weight: bold;
+  border: 2px solid black;
+  text-shadow: 0 0 5px black;
+  margin-bottom: 20px;
 }

@@ -29,7 +29,9 @@ class App extends Component {
       rec: "",
       data: [],
       lat: null,
-      lng: null
+      lng: null,
+      class: "btn-hide",
+      class2: "getRec"
   }
   this.IncreaseBP = this.IncreaseBP.bind(this)
   this.IncreaseC = this.IncreaseC.bind(this)
@@ -57,7 +59,25 @@ class App extends Component {
   this.setTakeoutYes = this.setTakeoutYes.bind(this)
   this.getRec = this.getRec.bind(this)
   this.setLocation = this.setLocation.bind(this)
+  this.seeResults = this.seeResults.bind(this)
 }
+
+  retakeQuiz(){
+    window.location.reload();
+  }
+
+  seeResults(){
+    if (this.state.class !== "btn-show"){
+      this.setState({
+        class: "btn-show",
+        class2: "btn-hide"
+      })
+    } else {
+      this.setState({
+        class1: "btn-hide"
+      })
+    }
+  }
 
   setLocation(lt,ln){
     this.setState({
@@ -352,16 +372,20 @@ class App extends Component {
             data: res["data"]["jsonBody"]["businesses"]
           })
           console.log(this.state.data)
+          {this.seeResults()}
         })
         .catch(err => {
           console.log(err)
         })
     }
 
+
   render() {
     return (
       <div>
-        <Header />
+        <Header
+          retakeQuiz={this.retakeQuiz}
+        />
         <Switch>
 
         <Route exact path='/quiz' render={(props) => (
@@ -442,10 +466,10 @@ class App extends Component {
             />
             <div class="getRecBut">
               <form onSubmit={this.getRec}>
-                <button class="getRec">Get Recommendation!</button>
+                <button class={this.state.class2}>Get Recommendation!</button>
               </form>
               <Link to='/quiz/rec'>
-                <button>click</button>
+                <button class={this.state.class}>See Results!</button>
               </Link>
             </div>
           </div>

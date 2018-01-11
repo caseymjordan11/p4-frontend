@@ -9,7 +9,9 @@ class Header extends Component {
       <nav>
         <div class="title">
           <h1>Title</h1>
-          <Link to="/quiz">Take Quiz Again</Link>
+          <Link to="/quiz">
+            <button onClick={this.props.retakeQuiz}>retakeQuiz</button>
+          </Link>
         </div>
       </nav>
     </div>
