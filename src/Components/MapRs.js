@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import Map from "pigeon-maps"
 import Marker from "pigeon-marker"
+import axios from 'axios'
 
 class MapRs extends Component {
   constructor(props) {
@@ -9,7 +10,26 @@ class MapRs extends Component {
       rest: []
     }
     this.showRest = this.showRest.bind(this)
+    this.saveRec = this.saveRec.bind(this)
   }
+
+  saveRec(e){
+    e.preventDefault()
+    axios.post('http://localhost:3001/api/save', {
+      name: this.state.rest[0],
+      food: this.props.food,
+      rating: this.state.rest[1],
+      city: this.state.rest[2],
+      phone: this.state.rest[3],
+      url: this.state.rest[4]
+    })
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
 
   showRest(e){
     console.log(e.payload)
@@ -56,6 +76,11 @@ class MapRs extends Component {
             <h4>City: {this.state.rest[2]}</h4>
             <h4>Rating: {this.state.rest[1]}</h4>
         </div>
+        <form onSubmit={this.saveRec}>
+          <button>
+              Save Recommendation!
+          </button>
+        </form>
       </div>
     )
   }
