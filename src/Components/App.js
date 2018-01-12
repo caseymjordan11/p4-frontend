@@ -25,13 +25,13 @@ class App extends Component {
       desert: 0,
       sushi: 0,
       money: 0,
-      location: "Boston",
       rec: "",
       data: [],
       lat: null,
       lng: null,
       class: "btn-hide",
-      class2: "getRec"
+      class2: "getRec",
+      tryAgain: ""
   }
   this.IncreaseBP = this.IncreaseBP.bind(this)
   this.IncreaseC = this.IncreaseC.bind(this)
@@ -66,7 +66,20 @@ class App extends Component {
   retakeQuiz(){
     this.setState({
       class: "btn-hide",
-      class2: "getRec"
+      class2: "getRec",
+      delivery: "Delivery",
+      burger: 0,
+      mexican: 0,
+      indian: 0,
+      thai: 0,
+      italian: 0,
+      chinese: 0,
+      pizza: 0,
+      salad: 0,
+      desert: 0,
+      sushi: 0,
+      money: 0,
+      rec: ""
     })
   }
 
@@ -373,12 +386,16 @@ class App extends Component {
         )
         .then(res => {
           this.setState({
-            data: res["data"]["jsonBody"]["businesses"]
+            data: res["data"]["jsonBody"]["businesses"],
+            tryAgain: ""
           })
           console.log(this.state.data)
           {this.seeResults()}
         })
         .catch(err => {
+          this.setState({
+            tryAgain: "Click again"
+          })
           console.log(err)
         })
     }
@@ -473,6 +490,7 @@ class App extends Component {
               <Link to='/quiz/rec'>
                 <button class={this.state.class}>See Results!</button>
               </Link>
+              <p>{this.state.tryAgain}</p>
             </div>
           </div>
         )}  />
