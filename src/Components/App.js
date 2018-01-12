@@ -63,7 +63,7 @@ class App extends Component {
 }
 
   retakeQuiz(){
-    window.location.reload();
+    this.forceUpdate()
   }
 
   seeResults(){
