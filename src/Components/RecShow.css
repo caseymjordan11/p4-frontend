@@ -6,3 +6,20 @@ h1, h2 {
   display: flex;
   justify-content: center;
 }
+
+.retake {
+  width: 100px;
+  height: 50px;
+  background: #FF876F;
+  border-radius: 25px;
+  font-size: 17px;
+  color: white;
+  font-weight: bold;
+  border: 2px solid black;
+  text-shadow: 0 0 5px black;
+  margin-bottom: 20px;
+}
+
+.retake:hover{
+  background: #E74624;
+}

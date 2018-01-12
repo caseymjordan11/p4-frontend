@@ -1,6 +1,7 @@
 import React, { Component } from "react"
 import './RecShow.css'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 
 import MapRs from './MapRs.js'
 import RecTable from './RecTable.js'
@@ -30,6 +31,9 @@ class RecShow extends Component {
       <div class="rec">
         <h2>Your Food Recommendation is:</h2>
         <h2>{this.props.rec}</h2>
+        <Link to="/quiz">
+          <button class="retake" onClick={this.props.retakeQuiz}>Retake Quiz</button>
+        </Link>
         <MapRs
           recs={this.props.recs}
           position={[this.props.lat, this.props.lng]}

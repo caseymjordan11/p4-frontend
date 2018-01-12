@@ -384,7 +384,6 @@ class App extends Component {
     return (
       <div>
         <Header
-          retakeQuiz={this.retakeQuiz}
         />
         <Switch>
         <Route exact path='/quiz' render={(props) => (
@@ -480,6 +479,7 @@ class App extends Component {
               recs={this.state.data}
               lat={this.state.lat}
               lng={this.state.lng}
+              retakeQuiz={this.retakeQuiz}
             />
           </div>
         )}  />
