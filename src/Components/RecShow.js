@@ -15,7 +15,7 @@ class RecShow extends Component {
   }
 
   componentWillMount(){
-    axios.get(`http://localhost:3001/api/rec/${this.props.rec}`)
+    axios.get(`http://p4-backend-api.herokuapp.com/api/rec/${this.props.rec}`)
     .then((res) => {
       this.setState({
         hist: res.data

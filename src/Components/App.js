@@ -365,7 +365,7 @@ class App extends Component {
     })
       axios
         .get(
-          `http://localhost:3001/api/yelp/${this.state.rec + this.state.delivery}/${this.state.lat}/${this.state.lng}/${this.state.money}`
+          `http://p4-backend-api.herokuapp.com/api/yelp/${this.state.rec + this.state.delivery}/${this.state.lat}/${this.state.lng}/${this.state.money}`
         )
         .then(res => {
           this.setState({
