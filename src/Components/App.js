@@ -60,10 +60,14 @@ class App extends Component {
   this.getRec = this.getRec.bind(this)
   this.setLocation = this.setLocation.bind(this)
   this.seeResults = this.seeResults.bind(this)
+  this.retakeQuiz = this.retakeQuiz.bind(this)
 }
 
   retakeQuiz(){
-    window.location.reload()
+    this.setState({
+      class: "btn-hide",
+      class2: "getRec"
+    })
   }
 
   seeResults(){
