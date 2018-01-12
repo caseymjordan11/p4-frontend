@@ -19,7 +19,7 @@ class MapRs extends Component {
 
   saveRec(e){
     e.preventDefault()
-    axios.post('https://p4-backend-api.herokuapp.com/api/save', {
+    axios.post('https://indecisive-chef-api.herokuapp.com/api/save', {
       name: this.state.rest[0],
       food: this.props.food,
       rating: this.state.rest[1],
