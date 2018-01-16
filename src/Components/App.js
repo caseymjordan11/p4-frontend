@@ -394,7 +394,7 @@ class App extends Component {
         })
         .catch(err => {
           this.setState({
-            tryAgain: "Click again"
+            tryAgain: "Yelp Request Failed - Click Get Recommendation Again"
           })
           console.log(err)
         })
@@ -488,7 +488,7 @@ class App extends Component {
                 <button class={this.state.class2}>Get Recommendation!</button>
               </form>
               <Link to='/quiz/rec'>
-                <button class={this.state.class}>See Results!</button>
+                <button class={this.state.class}>Click to See Results!</button>
               </Link>
               <p>{this.state.tryAgain}</p>
             </div>

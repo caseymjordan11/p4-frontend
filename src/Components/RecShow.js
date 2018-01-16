@@ -31,6 +31,7 @@ class RecShow extends Component {
       <div class="rec">
         <h2>Your Food Recommendation is:</h2>
         <h2>{this.props.rec}</h2>
+        <p>Click on Pin to See Restaurant Information</p>
         <Link to="/quiz">
           <button class="retake" onClick={this.props.retakeQuiz}>Retake Quiz</button>
         </Link>
